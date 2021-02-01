@@ -1,0 +1,146 @@
+1 ЗАДАЧА
+package com.metanit;
+import java.io.*;
+class Variables {
+
+    public static void main (String args [])  throws Exception {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String y = reader.readLine();
+        int x = Integer.parseInt(y);
+
+        if(x<100){
+
+            System.out.println("less");
+        }
+        else{
+
+            System.out.println("not less");
+        }
+        }
+    }
+    
+    
+    2 ЗАДАЧА 
+    package com.metanit;
+import java.io.*;
+class Variables {
+
+    public static void main (String args [])  throws Exception {
+
+   BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+String s = reader.readLine(); 
+int n = Integer.parseInt(s); 
+if (n == 5) 
+{ 
+System.out.println("отлично"); 
+} 
+else if (n == 4) 
+{ 
+System.out.println("хорошо"); 
+} 
+else if (n == 3) 
+{ 
+System.out.println("удовлетворительно"); 
+} 
+else if (n == 2) 
+{ 
+System.out.println("неудовлетворительно"); 
+} 
+else 
+{ 
+System.out.println("недопустимое значение"); 
+} 
+} 
+} 
+
+3 задача
+package com.metanit;
+import java.lang.*;
+import java.io.*;
+
+class Variables {
+
+    public static void main (String args [])  throws Exception {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите день недели: ");
+        String s = reader.readLine();
+
+        switch (s) {
+            case "понедельник":
+                System.out.println("1");
+                break;
+            case "вторник":
+                System.out.println("2");
+                break;
+            case "среда":
+                System.out.println("3");
+                break;
+            case "четверг":
+                System.out.println("4");
+                break;
+            case "пятница":
+                System.out.println("5");
+                break;
+            case "суббота":
+                System.out.println("6");
+                break;
+            case "воскресенье":
+                System.out.println("7");
+                break;
+
+            default:
+                System.out.println("недопустимое значение");
+
+        }
+
+    }
+}
+
+4 задача
+package com.metanit;
+import java.io.*;
+
+class Variables {
+
+    public static void main (String args [])  throws Exception {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        int n = Integer.parseInt(s);
+        if (n < 0)
+        {
+            System.out.println("недопустимое значение");
+        }
+        else if (n < 51)
+        {
+            System.out.println("Разряд F");
+        }
+        else if (n < 61 )
+        {
+            System.out.println("Разряд E");
+        }
+        else if (n < 71)
+        {
+            System.out.println("Разряд D");
+        }
+        else if (n < 81)
+        {
+            System.out.println("Разряд C");
+        }
+        else if (n < 91)
+        {
+            System.out.println("Разряд B");
+        }
+
+        else if (n <= 100)
+        {
+            System.out.println("Разряд A");
+        }
+        else
+        {
+            System.out.println("недопустимое значение");
+        }
+    }
+}
