@@ -1,0 +1,428 @@
+Задание №1 
+Запустить на выполнение код программ, приведенных в конспекте лекционного занятия «Занятие № 10. Пакет java.lang». 
+
+1) package com.metanit;
+  public class Rectangle {
+   public int sideA;
+   public int sideB;
+   public Rectangle(int x, int y) {
+      super();
+      sideA = x;
+      sideB = y;
+   }
+   public boolean equals(Object obj) {
+      if(!(obj instanceof Rectangle)) 
+	     return false;
+      Rectangle ref = (Rectangle)obj;
+      return (((this.sideA==ref.sideA)&&(this.sideB==ref.sideB))||
+              (this.sideA==ref.sideB)&&(this.sideB==ref.sideA));
+   }
+   public static void main(String[] args) {
+      Rectangle r1 = new Rectangle(10,20);
+      Rectangle r2 = new Rectangle(10,10);
+      Rectangle r3 = new Rectangle(20,10);
+      System.out.println("r1.equals(r1) == " + r1.equals(r1));
+      System.out.println("r1.equals(r2) == " + r1.equals(r2));
+      System.out.println("r1.equals(r3) == " + r1.equals(r3));
+      System.out.println("r2.equals(r3) == " + r2.equals(r3));
+      System.out.println("r1.equals(null) == " + r1.equals(null));
+   }
+}
+
+2) package com.metanit;
+
+ class Book {
+    private String title;
+    private String author;
+    private int pagesNumber;
+    public Book(String title, String author,
+                int pagesNumber) {
+        super();
+        this.title = title;
+        this.author = author;
+        this.pagesNumber = pagesNumber;
+    }
+    public static void main(String[] args) {
+        Book book = new Book("Java2","Sun",1000);
+        System.out.println("object is: " + book);
+    }
+    public String toString(){
+        return "Book: " + title + " ( " + author +
+                ", " + pagesNumber + " pages )";
+    }
+}
+
+3) package com.metanit;
+
+interface Vehicle {
+    void go();
+}
+class Automobile implements Vehicle {
+    public void go() {
+        System.out.println("Automobile go!");
+    }
+}
+class Truck implements Vehicle {
+    public Truck(int i) {
+        super();
+    }
+    public void go() {
+        System.out.println("Truck go!");
+    }
+}
+class VehicleStarter {
+    public static void main(String[] args) {
+        Vehicle vehicle;
+        String[] vehicleNames = {"demo.lang.Automobile",
+                "demo.lang.Truck", "demo.lang.Tank"};
+        for(int i=0; i<vehicleNames.length; i++) {
+            try {
+                String name = vehicleNames[i];
+                System.out.println("look for class for: " + name);
+                Class aClass = Class.forName(name);
+                System.out.println("creating vehicle...");
+                vehicle = (Vehicle)aClass.newInstance();
+                System.out.println("create vehicle: " + vehicle.getClass());
+                vehicle.go();
+            } catch(ClassNotFoundException e) {
+                System.out.println("Exception: " + e);
+            } catch(InstantiationException | IllegalAccessException e) {
+                System.out.println("Exception: " + e);
+            }
+        }
+    }
+}
+
+
+4) package com.metanit;
+
+ class Main {
+    public static void main(String[] args) {
+        int i = 1;
+        byte b = 1;
+        String value = "1000";
+        Integer iObj = new Integer(i);
+        Byte bObj = new Byte(b);
+        System.out.println("while i==b is " +
+                (i == b));
+        System.out.println("iObj.equals(bObj) is "
+                + iObj.equals(bObj));
+        Long lObj = new Long(value);
+        System.out.println("lObj = " +
+                lObj.toString());
+        Long sum = new Long(lObj.longValue() +
+                iObj.byteValue() +
+                bObj.shortValue());
+        System.out.println("The sum = " +
+                sum.doubleValue());
+    }
+}
+
+5) package com.metanit;
+public class Test {
+    public static void main(String[] args) {
+        Test t = new Test();
+        String s1 = "Hello world !!!";
+        String s2 = "Hello world !!!";
+        System.out.println("String`s equally = " +
+                (s1.equals(s2)));
+        System.out.println(
+                "Strings are the same = " + (s1==s2));
+    }
+}
+
+6) package com.metanit;
+
+public class Test {
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        String s = "prefix !";
+        System.out.println(s);
+        s = s.trim();
+        System.out.println(s);
+        s = s.concat(" suffix");
+        System.out.println(s);
+    }
+} 
+
+7) package com.metanit;
+
+public class Test {
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        String s = new String("ssssss");
+        StringBuffer sb =
+                new StringBuffer("bbbbbb");
+        s.concat("-aaa");
+        sb.append("-aaa");
+        System.out.println(s);
+        System.out.println(sb);
+    }
+}
+
+8) package com.metanit;
+
+public class Test {
+
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer("abc");
+        String str = sb.append("e").insert(4,
+                "f").insert(3, "d").toString();
+        System.out.println(str);
+    }
+}
+
+
+9) package com.metanit;
+
+public class Test {
+
+    public static void main(String[] args) {
+        Test t = new Test();
+        StringBuffer sb = new StringBuffer("aaa");
+        System.out.println("Before = " + sb);
+        t.doTest(sb);
+        System.out.println("After = " + sb);
+    }
+    void doTest(StringBuffer theSb){
+        theSb.append("-bbb");
+    }
+}
+
+10) package com.metanit;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
+public class Test {
+
+    public static void main(String[] args) {
+        System.out.println("Study Java");
+        try {
+            PrintStream print = new PrintStream(new
+                    FileOutputStream("d:\\file2.txt"));
+            System.setOut(print);
+            System.out.println("Study well");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+ЗАДАНИЕ №2 
+Запустить на выполнение код программ, приведенных в конспекте лекционного занятия «Занятие № 11. Пакет java.util». 
+
+1) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+ class Main {
+
+    public static void main(String[] args) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMMM dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,2002);
+        cal.set(Calendar.MONTH,Calendar.AUGUST);
+        cal.set(Calendar.DAY_OF_MONTH,31);
+        System.out.println(" Initialy set date: " + sdf.format(cal.getTime()));
+        cal.set(Calendar.MONTH,Calendar.SEPTEMBER);
+        System.out.println(" Date with month changed : " + sdf.format(cal.getTime()));
+        cal.set(Calendar.DAY_OF_MONTH,30);
+        System.out.println(" Date with day changed : " + sdf.format(cal.getTime()));
+
+    }
+}
+
+2) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+ class Main {
+
+     public static void main(String[] args) {
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMMM dd HH:mm:ss");
+
+         Calendar cal = Calendar.getInstance();
+         cal.set(Calendar.YEAR,2002);
+         cal.set(Calendar.MONTH,Calendar.AUGUST);
+         cal.set(Calendar.DAY_OF_MONTH,31);
+         System.out.println(" Initialy set date: " + sdf.format(cal.getTime()));
+         cal.set(Calendar.MONTH,Calendar.SEPTEMBER);
+         cal.set(Calendar.DAY_OF_MONTH,30);
+         System.out.println(" Date with day and month changed : " + sdf.format(cal.getTime()));
+     }
+ }
+ 
+ 3) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+ class Main {
+
+     public static void main(String[] args) {
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMMM dd HH:mm:ss");
+         Calendar cal = Calendar.getInstance();
+         cal.set(Calendar.YEAR,2002);
+         cal.set(Calendar.MONTH,Calendar.AUGUST);
+         cal.set(Calendar.DAY_OF_MONTH,31);
+         cal.set(Calendar.HOUR_OF_DAY,19);
+         cal.set(Calendar.MINUTE,30);
+         cal.set(Calendar.SECOND,00);
+         System.out.println("Current date: " + sdf.format(cal.getTime()));
+         cal.add(Calendar.SECOND,75);
+         System.out.println("Current date: " + sdf.format(cal.getTime()));
+         cal.add(Calendar.MONTH,1);
+         System.out.println("Current date: " + sdf.format(cal.getTime()));
+     }
+ }
+
+4) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+ class Main {
+
+     public static void main(String[] args) {
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMMM dd HH:mm:ss");
+         Calendar cal = Calendar.getInstance();
+         cal.set(Calendar.YEAR,2002);
+         cal.set(Calendar.MONTH,Calendar.AUGUST);
+         cal.set(Calendar.DAY_OF_MONTH,31);
+         cal.set(Calendar.HOUR_OF_DAY,19);
+         cal.set(Calendar.MINUTE,30);
+         cal.set(Calendar.SECOND,00);
+         System.out.println("Current date: " + sdf.format(cal.getTime()));
+         cal.roll(Calendar.SECOND,75);
+         System.out.println("Rule 1: " + sdf.format(cal.getTime()));
+         cal.roll(Calendar.MONTH,1);
+         System.out.println("Rule 2: " + sdf.format(cal.getTime()));
+     }
+ }
+ 
+ 5) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.TimeZone;
+
+class Main {
+
+     public static void main(String[] args) {
+         Main test = new Main();
+         TimeZone tz = TimeZone.getDefault();
+         int rawOffset = tz.getRawOffset();
+         System.out.println("Current TimeZone" + tz.getDisplayName() + tz.getID() + "\n\n");
+         // Display all available TimeZones
+         System.out.println("All Available TimeZones \n");
+         String[] idArr = tz.getAvailableIDs();
+         for(int cnt=0;cnt < idArr.length;cnt++){
+             tz = TimeZone.getTimeZone(idArr[cnt]);
+             System.out.println(test.padr(tz.getDisplayName() +
+                     tz.getID(),64) + " raw offset=" + tz.getRawOffset() +
+                     ";hour offset=(" + tz.getRawOffset()/ (1000 * 60 * 60 ) + ")");
+         }
+         // Display all available TimeZones same as for Moscow
+         System.out.println("\n\n TimeZones same as for Moscow \n");
+         idArr = tz.getAvailableIDs(rawOffset);
+         for(int cnt=0;cnt < idArr.length;cnt++){
+             tz = TimeZone.getTimeZone(idArr[cnt]);
+             System.out.println(test.padr(tz.getDisplayName()+
+                     tz.getID(),64) + " raw offset=" + tz.getRawOffset() +
+                     ";hour offset=(" + tz.getRawOffset()/ (1000 * 60 * 60 ) + ")");
+         }
+     }
+     String padr(String str,int len){
+         if(len - str.length() > 0){
+             char[] buf = new char[len - str.length()];
+             Arrays.fill(buf,' ');
+             return str + new String(buf);
+         }else{
+             return str.substring(0,len);
+         }
+     }
+ }
+ 
+ 6)  public static void main(String[] args) {
+      Test test = new Test();
+      SimpleTimeZone stz = new SimpleTimeZone(
+         TimeZone.getDefault().getRawOffset()
+         ,TimeZone.getDefault().getID()
+         ,Calendar.MARCH
+         ,-1
+         ,Calendar.SUNDAY
+         ,test.getTime(2,0,0,0)
+         ,Calendar.OCTOBER
+         ,-1
+         ,Calendar.SUNDAY
+         ,test.getTime(3,0,0,0)
+         );
+   System.out.println(stz.toString());
+   }
+   int getTime(int hour,int min,int sec,int ms){
+      return hour * 3600000 + min * 60000 + sec * 1000 + ms;
+   }
+}
+
+7) package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.TimeZone;
+
+        class TestObservable extends java.util.Observable {
+            private String name = "";
+
+            public TestObservable(String name) {
+                this.name = name;
+            }
+
+            public void modify() {
+                setChanged();
+            }
+
+            public String getName() {
+                return name;
+            }
+        }
+
+         class TestObserver implements java.util.Observer {
+            private String name = "";
+
+            public TestObserver(String name) {
+                this.name = name;
+            }
+
+            public void update(java.util.Observable o, Object arg) {
+                String str = "Called update of " + name;
+                str += " from " + ((TestObservable) o).getName();
+                str += " with argument " + (String) arg;
+                System.out.println(str);
+            }
+        }
+
+         class Test {
+            public Test() {
+            }
+
+            public  void main(String[] args) {
+                Test test = new Test();
+                TestObservable to = new TestObservable("Observable");
+                TestObserver o1 = new TestObserver("Observer 1");
+                TestObserver o2 = new TestObserver("Observer 2");
+                to.addObserver(o1);
+                to.addObserver(o2);
+                to.modify();
+                to.notifyObservers("Notify argument");
+            }
+        }
+
+8) 
