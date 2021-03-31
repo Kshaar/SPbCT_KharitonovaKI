@@ -1,0 +1,117 @@
+1.	Работа с консолью
+
+Вариант 5
+•	Вывести на экран результат вычисления 1+2−4.
+package com.metanit;
+
+
+public class Main {
+    public static void main(String args [] ) {
+
+        byte x=1;
+        byte t=2;
+        byte c=4;
+
+        int y=x+t-c;
+    System.out.println(y);
+    }
+}
+
+
+Вариант 2 
+
+•	Вывести на экран текущее название дня недели, название месяца и свое имя. Каждое слово должно быть в отдельной строке.
+package com.metanit;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Main {
+    public static void main(String args [] ) {
+
+        Date nwday = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd 'и время' hh:mm:ss a zzz");
+        System.out.println(nwday);
+
+        Person bob = new Person();      // вызов первого конструктора без параметров
+        bob.displayInfo();
+    }
+}
+class Person{
+
+    String name;    // имя
+    Person()
+    {
+        name = "Kseniia";
+    }
+
+    void displayInfo(){
+        System.out.printf( name);
+}
+}
+
+2.	Простейшая арифметика
+
+Вариант 1
+•	Пользователь вводит два числа. Найдите сумму и произведение данных чисел.
+package com.metanit;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Введите число a = ");
+        int a = scn.nextInt();
+        System.out.println("Введите число b = ");
+        int b = scn.nextInt();
+        System.out.println("Сумма = " + (a+b));
+        System.out.println("Произведение = " + (a*b));
+    }
+}
+
+
+Вариант 6
+•	Пользователь вводит цены 1 кг конфет и 1 кг печенья. Найдите стоимость: а) одной покупки из 300 г конфет и 400 г печенья;
+б) трех покупок, каждая из 2 кг печенья и 1 кг 800 г конфет.
+
+
+
+
+3.	Условный оператор и арифметика
+Вариант 20
+•	Дано два числа. Если хотя бы одно из них больше 30, то вывести yes, иначе no.
+package com.metanit;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+public class Main {
+
+    public static void main (String args [])  throws Exception {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String y = reader.readLine();
+        String b = reader.readLine();
+
+
+        int x = Integer.parseInt(y);
+        int z = Integer.parseInt(b);
+
+
+        if(x > 30)
+            {
+
+            System.out.println("yes");
+        }
+        else{
+
+            System.out.println("no");
+        }
+    }
+}
+
+Вариант 9
+•	Дано число. Если оно от 2 до 5 включительно, то увеличить его на 10. Если оно от 7 до 40, то уменьшить на 100. Если оно не более 0 или более 3000, то увеличить в 3 раза (то есть умножить на 3). Иначе занулить это число.
+
