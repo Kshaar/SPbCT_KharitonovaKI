@@ -113,5 +113,43 @@ public class Main {
 }
 
 Вариант 9
-•	Дано число. Если оно от 2 до 5 включительно, то увеличить его на 10. Если оно от 7 до 40, то уменьшить на 100. Если оно не более 0 или более 3000, то увеличить в 3 раза (то есть умножить на 3). Иначе занулить это число.
+•	Дано число. Если оно от 2 до 5 включительно, то увеличить его на 10.
+Если оно от 7 до 40, то уменьшить на 100. 
+Если оно не более 0 или более 3000, то увеличить в 3 раза (то есть умножить на 3).
+Иначе занулить это число.
 
+package com.metanit;
+
+import java.io.*;
+
+public class Main {
+
+    public static void main(String args[]) throws Exception {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        int n = Integer.parseInt(s);
+
+        int y = Integer.parseInt(s);
+
+        if (n > 2 && n <= 5)
+            y = n + 10;
+
+
+        if (n > 7 && n < 40)
+            y = 100 - n;
+
+        
+
+        if (n < 0)
+            y = n * 3;
+
+        if (n > 3000)
+            y = 3 * n;
+
+        
+        {
+            System.out.println(y);
+        }
+    }
+}
