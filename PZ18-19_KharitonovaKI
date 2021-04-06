@@ -51,3 +51,45 @@ public class Main {
 }
 
 Пример №4
+
+package com.metanit;
+
+import java.net.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String args[]) {
+        Socket s = null;
+        try {//посылка строки клиенту
+            ServerSocket server = new ServerSocket(3456);
+            s = server.accept();
+            PrintStream ps = new PrintStream(s.getOutputStream());
+            ps.println("привет!");
+            ps.flush();
+            s.close(); // разрыв соединения
+        }catch (IOException e){System.out.println("ошибка: " + e); }
+    }
+}
+
+________________
+
+package sample;
+import java.io.*;
+import java.net.*;
+
+
+public class Controller {
+    public static void main(String[] args) {
+        Socket socket = null;
+        try {//получение строки клиентом
+            socket = new Socket("localhost", 3456);
+            BufferedReader dis = new BufferedReader(new
+                    InputStreamReader(socket.getInputStream()));
+            String msg = dis.readLine();
+            System.out.println(msg);
+        } catch (IOException e) {System.out.println("ошибка: " + e); }
+    }
+}
+
+
